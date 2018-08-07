@@ -1,0 +1,39 @@
+.name-plate--wrapper {
+  display: inline-block;
+}
+
+.name-plate {
+  /*display: inline-block;*/
+  /*position: relative;*/
+  width: 3cm;
+  height: 3cm;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  flex-direction: column;
+  /*background-image: url("./polygon-filled.svg");*/
+  /*background-size: 100% auto;*/
+}
+
+.name-plate img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.name-plate .name {
+
+  /*height: 400px;*/
+}
+
+svg {
+  stroke-width: 3;
+}
+
+text {
+  color: red;
+  font-size: 60px;
+  border: 1px solid forestgreen;
+}

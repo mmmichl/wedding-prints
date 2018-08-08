@@ -7,6 +7,7 @@ import './App.css';
 const VIEWS = {
   none: 0,
   clamps: 1,
+  clampsOutline: 3,
   namePlate: 2,
 };
 
@@ -15,7 +16,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: VIEWS.clamps,
+      view: VIEWS.clampsOutline,
+      debugOutline: false,
       participants: null
     };
   }
@@ -37,6 +39,12 @@ class App extends Component {
           <label><input type="radio" name="view" value={VIEWS.clamps}
                         checked={this.state.view === VIEWS.clamps}
                         onChange={evt => this.viewChanged(evt)}/>Clamps</label>
+          <label><input type="radio" name="view" value={VIEWS.clampsOutline}
+                        checked={this.state.view === VIEWS.clampsOutline}
+                        onChange={evt => this.viewChanged(evt)}/>Clamps Outline</label>
+          {this.state.view === VIEWS.clampsOutline ? <label><input type="checkbox" checked={this.state.debugOutline}
+                                                    onChange={evt => this.setState({debugOutline: evt.target.checked})}/>
+            Debug Outline</label> : null}
           <label><input type="radio" name="view" value={VIEWS.namePlate}
                         checked={this.state.view === VIEWS.namePlate}
                         onChange={evt => this.viewChanged(evt)}/>Name Plates</label>
@@ -51,6 +59,9 @@ class App extends Component {
             case (VIEWS.clamps):
               return this.state.participants && this.state.participants.map((part, idx) =>
                 <NamePlate name={part[0]} outline={false} key={idx}/>);
+            case (VIEWS.clampsOutline):
+              return this.state.participants && this.state.participants.map((part, idx) =>
+                <NamePlate name={part[0]} outline={true} debugOutline={this.state.debugOutline} key={idx}/>);
             case VIEWS.namePlate:
               return <span>not jet impleneted</span>;
             default:

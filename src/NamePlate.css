@@ -1,34 +1,54 @@
-@font-face {
-    font-family: capsuula;
-    src: url(Capsuula.ttf);
-}
-
 .name-plate--wrapper {
-  display: inline-block;
+  display: inline-flex;
+
+  width: 6.3cm;
+  height: 8cm;
+
+  margin: -1px 0 0 0;
+  padding: 0;
 }
 
-.name-plate {
-  width: 2.5cm;
-  height: 2.5cm;
+.name-plate--both-sides {
   display: flex;
-
   flex-direction: column;
+  flex: 1;
 }
 
-.name-plate img {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+.name-plate--bend-line {
+  height: 1px;
+  border-left: 0.5cm solid #e0e0e0;
+  border-right: 0.5cm solid #e0e0e0;
 }
 
-path {
-  stroke-width: 4;
-}
+.name-plate--one-side {
+  display: flex;
+  flex: 1;
 
-text {
-  stroke: rgb(8, 110, 131);
-  font-size: 85px;
+  justify-content: center;
+  flex-direction: column;
+  vertical-align: center;
+  text-align: center;
   font-family: capsuula, sans-serif;
-  font-weight: bolder;
+  font-size: 0.4cm;
+  color: rgb(8, 110, 131);
+}
+
+.name-plate--one-side.top {
+  border-top: 1px solid #e0e0e0;
+}
+.name-plate--one-side.bottom {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.name-plate--one-side .bigger {
+  font-size: 1cm;
+  font-weight: bold;
+}
+
+.name-plate--horizontal-cut-indicator {
+  width: 1px;
+  /*height: 8cm;*/
+  border-top: 0.5cm solid #e0e0e0;
+  border-bottom: 0.5cm solid #e0e0e0;
+  margin-left: -1px;
 }

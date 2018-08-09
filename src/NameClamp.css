@@ -1,0 +1,31 @@
+
+
+.name-clamp--wrapper {
+  display: inline-block;
+}
+
+.name-clamp {
+  width: 2.5cm;
+  height: 2.5cm;
+  display: flex;
+
+  flex-direction: column;
+}
+
+.name-clamp img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+path {
+  stroke-width: 4;
+}
+
+text {
+  stroke: rgb(8, 110, 131);
+  font-size: 85px;
+  font-family: capsuula, sans-serif;
+  font-weight: bolder;
+}

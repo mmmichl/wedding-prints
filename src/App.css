@@ -1,5 +1,21 @@
+@font-face {
+  font-family: capsuula;
+  src: url(Capsuula.ttf);
+}
+
 @media print {
   .no-print {
     display: none !important;
   }
+}
+
+.horizontal-cut-line {
+  display: inline-block;
+
+  height: 8cm;
+  width: 1px;
+
+  margin-right: -1px;
+  border-top: 0.5cm solid grey;
+  border-bottom: 0.5cm solid grey;
 }

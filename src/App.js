@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import NameClamp from "./NameClamp";
 import NamePlate from "./NamePlate";
 import {loadGapi} from "./gauth-service";
 import './App.css';
@@ -16,7 +17,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: VIEWS.clampsOutline,
+      view: VIEWS.none,
       debugOutline: false,
       participants: null
     };
@@ -43,7 +44,7 @@ class App extends Component {
                         checked={this.state.view === VIEWS.clampsOutline}
                         onChange={evt => this.viewChanged(evt)}/>Clamps Outline</label>
           {this.state.view === VIEWS.clampsOutline ? <label><input type="checkbox" checked={this.state.debugOutline}
-                                                    onChange={evt => this.setState({debugOutline: evt.target.checked})}/>
+                                                                   onChange={evt => this.setState({debugOutline: evt.target.checked})}/>
             Debug Outline</label> : null}
           <label><input type="radio" name="view" value={VIEWS.namePlate}
                         checked={this.state.view === VIEWS.namePlate}
@@ -58,18 +59,24 @@ class App extends Component {
               return <span>Select a view</span>;
             case (VIEWS.clamps):
               return this.state.participants && this.state.participants.map((part, idx) =>
-                <NamePlate name={part[0]} outline={false} key={idx}/>);
+                <NameClamp name={part[0]} outline={false} key={idx}/>);
             case (VIEWS.clampsOutline):
               return this.state.participants && this.state.participants.map((part, idx) =>
-                <NamePlate name={part[0]} outline={true} debugOutline={this.state.debugOutline} key={idx}/>);
+                <NameClamp name={part[0]} outline={true} debugOutline={this.state.debugOutline} key={idx}/>);
             case VIEWS.namePlate:
-              return <span>not jet impleneted</span>;
+              return this.state.participants && this.state.participants.map((part, idx) =>
+                [
+                  <NamePlate name={part[0]}
+                             corner={part[3]}
+                             key={idx}/>
+                ]);
             default:
               return <span>default: not jet impleneted</span>;
           }
         })()}
       </div>
-    );
+    )
+      ;
   }
 
   componentDidMount() {

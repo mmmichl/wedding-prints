@@ -3,7 +3,7 @@ import NameClamp from "./NameClamp";
 import NamePlate from "./NamePlate";
 import {loadGapi} from "./gauth-service";
 import './App.css';
-
+// import namePlateImg from './Namensschilder_Tisch_59,2x63,5mm_A-Falt_blanko.svg';
 
 const VIEWS = {
   none: 0,
@@ -17,14 +17,10 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: VIEWS.none,
+      view: VIEWS.namePlate,
       debugOutline: false,
       participants: null
     };
-  }
-
-  logState() {
-    console.log(this.state.participants);
   }
 
   viewChanged(e) {
@@ -53,6 +49,8 @@ class App extends Component {
           participents length: {JSON.stringify(this.state.participants && this.state.participants.length)}
         </div>
 
+        {/*<img src={namePlateImg} style={{border: "1px solid black", padding: "1px"}}/>*/}
+
         {(() => {
           switch (this.state.view) {
             case VIEWS.none:
@@ -68,6 +66,7 @@ class App extends Component {
                 [
                   <NamePlate name={part[0]}
                              corner={part[3]}
+                             menu={part[6]}
                              key={idx}/>
                 ]);
             default:

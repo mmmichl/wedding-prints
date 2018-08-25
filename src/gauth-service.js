@@ -42,8 +42,16 @@ async function initClient(cb) {
 async function fetchParticipants() {
   const participantsRes = await gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: '1pjtRcgHYwVR7i8l4pJgatTHoUzIjHJmAvGmpDVld14k',
-    range: 'B2:E',
+    range: 'B2:H',
   });
 
-  return participantsRes.result.values;
+  // const parts = participantsRes.result.values;
+  // console.log(parts[0])
+  // const names = {};
+  // parts.sort((a,b) => a[0].localeCompare(b[0])).forEach(n => names[n[0]] ? names[n[0]].push(n[3]) : names[n[0]] = [n[3]]);
+  // console.log('names', Object.keys(names).filter(k => names[k].length > 1).map(k => [k, names[k]]))
+
+  let participantDetails = participantsRes.result.values;
+  console.log('participants', participantDetails.length, 'first result', participantDetails[0]);
+  return participantDetails;
 }

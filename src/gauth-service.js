@@ -45,11 +45,11 @@ async function fetchParticipants() {
     range: 'B2:H',
   });
 
-  // const parts = participantsRes.result.values;
-  // console.log(parts[0])
-  // const names = {};
-  // parts.sort((a,b) => a[0].localeCompare(b[0])).forEach(n => names[n[0]] ? names[n[0]].push(n[3]) : names[n[0]] = [n[3]]);
-  // console.log('names', Object.keys(names).filter(k => names[k].length > 1).map(k => [k, names[k]]))
+  const parts = participantsRes.result.values;
+  console.log(parts[0])
+  const names = {};
+  parts.sort((a,b) => a[0].localeCompare(b[0])).forEach(n => names[n[2]] ? names[n[2]].push(n[2]) : names[n[2]] = [n[3]]);
+  console.log('names', Object.keys(names).map(k => [k, names[k]]))
 
   let participantDetails = participantsRes.result.values;
   console.log('participants', participantDetails.length, 'first result', participantDetails[0]);

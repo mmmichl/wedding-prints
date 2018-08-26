@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NameClamp from "./NameClamp";
 import NamePlate from "./NamePlate";
+import TableOverview from "./TableOverview";
 import {loadGapi} from "./gauth-service";
 import './App.css';
 // import namePlateImg from './Namensschilder_Tisch_59,2x63,5mm_A-Falt_blanko.svg';
@@ -10,17 +11,27 @@ const VIEWS = {
   clamps: 1,
   clampsOutline: 3,
   namePlate: 2,
+  tableOverview: 4,
 };
 
+interface Participant {
+  firstName: string;
+  lastName: string;
+  kidChair: string;
+  corner: string;
+  tableNr: string;
+}
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: VIEWS.namePlate,
+      view: VIEWS.tableOverview,
       debugOutline: false,
       participants: null
     };
+
+    setInterval(() => this.state.view === VIEWS.tableOverview ? this.componentDidMount() : null, 10000);
   }
 
   viewChanged(e) {
@@ -45,6 +56,9 @@ class App extends Component {
           <label><input type="radio" name="view" value={VIEWS.namePlate}
                         checked={this.state.view === VIEWS.namePlate}
                         onChange={evt => this.viewChanged(evt)}/>Name Plates</label>
+          <label><input type="radio" name="view" value={VIEWS.tableOverview}
+                        checked={this.state.view === VIEWS.tableOverview}
+                        onChange={evt => this.viewChanged(evt)}/>Table Overview</label>
           &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
           participents length: {JSON.stringify(this.state.participants && this.state.participants.length)}
         </div>
@@ -69,17 +83,28 @@ class App extends Component {
                              menu={part[6]}
                              key={idx}/>
                 ]);
+            case VIEWS.tableOverview:
+              return this.state.participants && <TableOverview participants={this.mapParticipants(this.state.participants)}/>
             default:
               return <span>default: not jet impleneted</span>;
           }
         })()}
       </div>
-    )
-      ;
+    );
   }
 
   componentDidMount() {
     loadGapi(participants => this.setState({participants: participants}));
+  }
+
+  mapParticipants(rawParticipants) {
+    return rawParticipants.map(p => ({
+      firstName: p[0],
+      lastName: p[1],
+      kidChair: p[2],
+      corner: p[3],
+      tableNr: p[5]
+    }));
   }
 }
 

@@ -26,7 +26,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: VIEWS.tableOverview,
+      view: VIEWS.namePlate,
       debugOutline: false,
       participants: null
     };
@@ -70,13 +70,13 @@ class App extends Component {
             case VIEWS.none:
               return <span>Select a view</span>;
             case (VIEWS.clamps):
-              return this.state.participants && this.state.participants.map((part, idx) =>
+              return this.state.participants && this.state.participants.concat([[],[],[],[]],[]).map((part, idx) =>
                 <NameClamp name={part[0]} outline={false} key={idx}/>);
             case (VIEWS.clampsOutline):
-              return this.state.participants && this.state.participants.map((part, idx) =>
+              return this.state.participants && this.state.participants.concat([[],[],[],[],[]]).map((part, idx) =>
                 <NameClamp name={part[0]} outline={true} debugOutline={this.state.debugOutline} key={idx}/>);
             case VIEWS.namePlate:
-              return this.state.participants && this.state.participants.map((part, idx) =>
+              return this.state.participants && this.state.participants.concat([[],[],[],[],[]]).map((part, idx) =>
                 [
                   <NamePlate name={part[0]}
                              corner={part[3]}

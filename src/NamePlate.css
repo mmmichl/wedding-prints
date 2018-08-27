@@ -1,8 +1,8 @@
 .name-plate--wrapper {
   display: inline-flex;
 
-  width: 59.2mm;
-  height: 55.2mm;
+  width: 65.1mm;
+  height: 60.7mm;
 
   margin: -1px 0 0 0;
   padding: 0;
@@ -45,6 +45,8 @@
 }
 
 .name-plate--one-side .bigger {
+  padding-top: 1mm;
+  padding-bottom: 0.5mm;
   font-size: 1cm;
   line-height: 1.1cm;
   /*line-height: 0.98cm;*/
@@ -52,7 +54,7 @@
 }
 
 .name-plate--one-side .menu {
-  font-size: 0.5cm;
+  font-size: 0.6cm;
   margin-top: 0.2cm;
   color: #D09A37;
 }
@@ -64,3 +66,15 @@
   border-bottom: 0.5cm solid #e0e0e0;
   margin-left: -1px;
 }
+
+.clown-hat {
+  width: 8mm;
+  vertical-align: top;
+}
+/*.clown-hat::after {*/
+  /*content: " ";*/
+  /*background: url("./Namensschilder_Tisch_59,2x63,5mm_A-Falt.svg") no-repeat center center;*/
+  /*background-size: contain;*/
+  /*width: 10mm;*/
+  /*vertical-align: top;*/
+/*}*/

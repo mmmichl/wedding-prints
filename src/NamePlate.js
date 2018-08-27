@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './NamePlate.css';
+import clownHat from './clownhat_petrol.png'
 
 
 const MENU = {
@@ -29,7 +30,7 @@ const menuKeyWords = [
 ];
 
 const menuText = [
-  '?!',
+  '',
   'Flugentenbrust',
   'Wallerfilet',
   'Gnocchi',
@@ -44,7 +45,7 @@ const menuText = [
 export default class NamePlate extends Component {
   mapMenu = (menu) => {
     for (let i = 1; i < menuKeyWords.length; i += 1) {
-      if (menu.indexOf(menuKeyWords[i]) !== -1) return i;
+      if (menu && menu.indexOf(menuKeyWords[i]) !== -1) return i;
     }
 
     console.log('unknown menu', menu);
@@ -57,13 +58,15 @@ export default class NamePlate extends Component {
   };
 
   render() {
+    const hasClownhat = this.props.name === 'Was i net' || this.props.name === 'Doktor';
+
     return <div className="name-plate--wrapper">
       <div className="name-plate--horizontal-cut-indicator"></div>
       <div className="name-plate--both-sides">
         <div className="name-plate--one-side top"></div>
         <div className="name-plate--bend-line"></div>
         <div className="name-plate--one-side bottom">
-          <span className="bigger">{this.props.name}</span>
+          <span className="bigger">{this.props.name}{hasClownhat ? <img src={clownHat} className="clown-hat" alt="hat"/> : null}</span>
           <span>{this.props.corner}</span>
           <span className="menu">{this.menuText(this.props.menu)}</span>
         </div>

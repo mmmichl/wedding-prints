@@ -3,6 +3,13 @@ import './NameClamp.css';
 
 class NameClamp extends Component {
   render() {
+    let name = this.props.name;
+    if (name === "Marian M. H.") {
+      name = "Marian M.H."
+    }
+    // const smaller = name && name.length > 8 && name !== 'Julijana';
+    const smaller = name === 'Marian M.H.' || name === 'Margareta' || name === 'Magdalena';
+
     return (
       <span className="name-clamp--wrapper">
         <span className="name-clamp">
@@ -11,7 +18,7 @@ class NameClamp extends Component {
               <polygon fill="#FFFFFF" style={{"stroke": "red"}}
                        strokeLinejoin="round"
                        strokeWidth="3"
-                       transform="scale(1.07 1.07) translate(-13 -13)"
+                       transform="scale(1.09 1.09) translate(-17 -17)"
                        points="135.329,31.085 76.495,60.506 24.995,163.506 40.495,209.673 21.496,286.335 78.162,320.001
 		86.996,344.835 177.83,379.835 239.497,368.335 367.665,303.335 390.165,261.169 360.331,186.669 355.166,97.5 308.166,57.5
 		267.334,51 232.834,32.667"/>
@@ -27,7 +34,7 @@ class NameClamp extends Component {
 		l46.479,39.697l5.394,89.39l29.549,73.07l-22.249,41.34l-127.528,64.924l-61.429,11.189L87.838,343.963z M75.575,59.732
 		L23.524,163.789l62.317,182.104l91.747,35.029l62.301-11.352l0.183-0.031l128.206-65.268l0.351-0.178l23.183-43.072l-29.839-73.787
 		l-5.4-89.513l-0.034-0.534l-47.83-40.853L268.4,49.986l-35.294-18.837l-96.989-1.948L75.575,59.732z"/>
-                <text textAnchor="middle" x={411 / 2} y={411 / 2 + 20}>{this.props.name}</text>
+                <text textAnchor="middle" className={smaller ? "smaller" : ''} x={411 / 2} y={411 / 2 + 20}>{name}</text>
               </g>
               : null}
           </svg>

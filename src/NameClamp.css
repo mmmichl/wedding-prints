@@ -2,6 +2,7 @@
 
 .name-clamp--wrapper {
   display: inline-block;
+  margin-left: 1mm;
 }
 
 .name-clamp {
@@ -28,4 +29,8 @@ text {
   font-size: 85px;
   font-family: capsuula, sans-serif;
   font-weight: bolder;
+}
+
+text.smaller {
+  font-size: 70px
 }

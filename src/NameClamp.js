@@ -15,10 +15,10 @@ class NameClamp extends Component {
         <span className="name-clamp">
           <svg viewBox="0 0 411.02 411.02">
             {this.props.outline ? <g id="Ebene_2">
-              <polygon fill="#FFFFFF" style={{"stroke": "red"}}
+              <polygon fill="#FFFFFF" style={{"stroke": "#FF0000"}}
                        strokeLinejoin="round"
-                       strokeWidth="3"
-                       transform="scale(1.09 1.09) translate(-17 -17)"
+                       strokeWidth="0.1"
+                       transform="scale(1.115 1.115) translate(-21.5 -20)"
                        points="135.329,31.085 76.495,60.506 24.995,163.506 40.495,209.673 21.496,286.335 78.162,320.001
 		86.996,344.835 177.83,379.835 239.497,368.335 367.665,303.335 390.165,261.169 360.331,186.669 355.166,97.5 308.166,57.5
 		267.334,51 232.834,32.667"/>

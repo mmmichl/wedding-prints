@@ -1,0 +1,125 @@
+.a4-wrapper.table-sign {
+  display: inline-block;
+}
+
+.table-sign .page-wrapper {
+  width: 148mm;
+  height: 209.25mm;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  /*justify-content: center;*/
+
+  position: relative;
+  margin: 0;
+
+  color: var(--teal);
+  font-family: capsuula, sans-serif;
+  font-size: 8mm;
+
+  border: solid 1px black;
+}
+
+.table-sign.content .page-wrapper > div {
+  padding: 2cm 1cm;
+  text-align: center;
+}
+
+.table-sign .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 120mm;
+  width: 120mm;
+  background: url("./circle_blank.svg") no-repeat center center;
+  background-size: contain;
+
+  margin-top: 2cm;
+  text-align: center;
+  font-family: foxinsnow, sans-serif;
+  font-size: 8mm;
+  /*width: 93mm;*/
+  /*margin-left: 13px;*/
+}
+
+.table-sign .table-name {
+  margin-top: 5mm;
+  font-family: capsuula, sans-serif;
+  font-size: 1cm;
+  text-align: center;
+}
+
+.table-sign .table-name strong {
+  font-size: 1.2cm;
+}
+
+.table-sign .number {
+  position: absolute;
+  top: 5mm;
+  right: 7mm;
+
+  color: var(--orange);
+  font-weight: bold;
+  font-size: 1.5cm;
+}
+
+.table-sign.a4-wrapper.content {
+  background: url("./A5_Infotafel_blanko_rotated.svg") no-repeat center center;
+  background-size: contain;
+}
+
+.table-sign.a4-wrapper.content .page-wrapper {
+  font-size: 7mm;
+}
+
+.alt-color {
+  /*color: var(--orange);*/
+  font-style: italic;
+}
+
+.table-sign h2 {
+  margin: 12mm 0 2mm;
+
+  font-family: foxinsnow, sans-serif;
+  font-size: 1cm;
+}
+
+.table-sign h3 {
+  margin: 3mm 0 0;
+
+  font-weight: normal;
+  /*font-family: foxinsnow, sans-serif;*/
+  /*font-size: 1cm;*/
+  color: var(--orange);
+}
+
+.table-sign .small {
+  font-size: 5mm;
+  /*line-height: 5mm;*/
+}
+
+.table-sign ul {
+  display: inline-block;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+.table-sign ul li {
+  list-style: none;
+}
+
+.table-sign table {
+  display: inline-table;
+  /*width: 11cm;*/
+}
+
+.table-sign table td {
+  padding-right: 3mm;
+  padding-bottom: 2mm;
+  vertical-align: top;
+  text-align: left;
+
+  line-height: 7mm;
+}

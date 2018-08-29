@@ -3,6 +3,16 @@
   src: url(Capsuula.ttf);
 }
 
+@font-face {
+  font-family: foxinsnow;
+  src: url('fox in the snow.ttf');
+}
+
+:root {
+  --orange: #D09A37;
+  --teal: #086e83;
+}
+
 @media print {
   .no-print {
     display: none !important;

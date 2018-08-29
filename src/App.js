@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import NameClamp from "./NameClamp";
 import NamePlate from "./NamePlate";
 import RoomSigns from "./RoomSigns";
+import TableSigns from "./TableSigns";
 import TableOverview from "./TableOverview";
 import {loadGapi} from "./gauth-service";
 import './App.css';
@@ -14,6 +15,7 @@ const VIEWS = {
   namePlate: 2,
   tableOverview: 4,
   roomSigns: 5,
+  tableSigns: 6,
 };
 
 // interface Participant
@@ -29,9 +31,15 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: VIEWS.roomSigns,
+      view: VIEWS.tableSigns,
       debugOutline: false,
-      participants: null
+      participants: null,
+      tables: [
+        ['1', 'Super Awesome', 'Blur - Song 2'],
+        ['2', 'Mega geil', 'Baywatch Theme'],
+        ['3', 'Team Fuigas', 'Limp Bizkit - My Way'],
+        ['4', 'table name 4', 'Smash Mouth - All Star'],
+      ]
     };
 
     setInterval(() => this.state.view === VIEWS.tableOverview ? this.componentDidMount() : null, 10000);
@@ -62,6 +70,9 @@ class App extends Component {
           <label><input type="radio" name="view" value={VIEWS.roomSigns}
                         checked={this.state.view === VIEWS.roomSigns}
                         onChange={evt => this.viewChanged(evt)}/>Room Signs</label>
+          <label><input type="radio" name="view" value={VIEWS.tableSigns}
+                        checked={this.state.view === VIEWS.tableSigns}
+                        onChange={evt => this.viewChanged(evt)}/>Table Signs</label>
           <label><input type="radio" name="view" value={VIEWS.tableOverview}
                         checked={this.state.view === VIEWS.tableOverview}
                         onChange={evt => this.viewChanged(evt)}/>Table Overview</label>
@@ -95,6 +106,14 @@ class App extends Component {
                   <RoomSigns kid={!!part[0]}
                              names={part.splice(1)}
                              key={idx}/>
+                ]);
+            case VIEWS.tableSigns:
+              return this.state.tables && this.state.tables.concat([[], []]).map((part, idx) =>
+                [
+                  <TableSigns number={part[0]}
+                              name={part[1]}
+                              song={part[2]}
+                              key={idx}/>
                 ]);
             case VIEWS.tableOverview:
               return this.state.participants &&

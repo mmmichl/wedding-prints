@@ -21,7 +21,7 @@ export default class RoomSigns extends Component {
     const bridalPair = names.length === 2 && names[0] === 'Anna' && names[1] === 'Michl';
     // const hasClownhat = name === 'Was i net' || name === 'Doktor';
 
-    return <div className="page-wrapper">
+    return <div className="page-wrapper room-sign">
       {/*<img src={circle} alt="bla"/>*/}
       <div className="content">
         {bridalPair ? <div>👰🤵</div> : null}

@@ -1,4 +1,4 @@
-.page-wrapper {
+.room-sign.page-wrapper {
   width: 210mm;
   height: 148mm;
   display: flex;
@@ -15,13 +15,13 @@
   border-bottom: dashed 1px #e0e0e0;
 }
 
-.content {
+.room-sign .content {
   text-align: center;
   width: 93mm;
   margin-left: 13px;
 }
 
-.content img {
+.room-sign .content img {
   margin-top: 7mm;
   width: 60px;
 }

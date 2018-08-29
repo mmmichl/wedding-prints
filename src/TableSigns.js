@@ -57,7 +57,7 @@ export default class TableSigns extends Component {
               </table>
 
               <h3>Bestellbar</h3>
-              <small className="alt-color">
+              <small className="hint">
                 direkt bei Kellnern oder an der Bar bestellen
               </small><br/>
               Bier, Spritzer, Antialkoholika, Kaffee<br/>

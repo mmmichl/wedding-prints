@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NameClamp from "./NameClamp";
 import NamePlate from "./NamePlate";
+import RoomSigns from "./RoomSigns";
 import TableOverview from "./TableOverview";
 import {loadGapi} from "./gauth-service";
 import './App.css';
@@ -12,21 +13,23 @@ const VIEWS = {
   clampsOutline: 3,
   namePlate: 2,
   tableOverview: 4,
+  roomSigns: 5,
 };
 
-interface Participant {
-  firstName: string;
-  lastName: string;
-  kidChair: string;
-  corner: string;
-  tableNr: string;
-}
+// interface Participant
+// {
+//   firstName: string;
+//   lastName: string;
+//   kidChair: string;
+//   corner: string;
+//   tableNr: string;
+// }
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: VIEWS.namePlate,
+      view: VIEWS.roomSigns,
       debugOutline: false,
       participants: null
     };
@@ -56,6 +59,9 @@ class App extends Component {
           <label><input type="radio" name="view" value={VIEWS.namePlate}
                         checked={this.state.view === VIEWS.namePlate}
                         onChange={evt => this.viewChanged(evt)}/>Name Plates</label>
+          <label><input type="radio" name="view" value={VIEWS.roomSigns}
+                        checked={this.state.view === VIEWS.roomSigns}
+                        onChange={evt => this.viewChanged(evt)}/>Room Signs</label>
           <label><input type="radio" name="view" value={VIEWS.tableOverview}
                         checked={this.state.view === VIEWS.tableOverview}
                         onChange={evt => this.viewChanged(evt)}/>Table Overview</label>
@@ -70,21 +76,29 @@ class App extends Component {
             case VIEWS.none:
               return <span>Select a view</span>;
             case (VIEWS.clamps):
-              return this.state.participants && this.state.participants.concat([[],[],[],[]],[]).map((part, idx) =>
+              return this.state.participants && this.state.participants.concat([[], [], [], []], []).map((part, idx) =>
                 <NameClamp name={part[0]} outline={false} key={idx}/>);
             case (VIEWS.clampsOutline):
-              return this.state.participants && this.state.participants.concat([[],[],[],[],[]]).map((part, idx) =>
+              return this.state.participants && this.state.participants.concat([[], [], [], [], []]).map((part, idx) =>
                 <NameClamp name={part[0]} outline={true} debugOutline={this.state.debugOutline} key={idx}/>);
             case VIEWS.namePlate:
-              return this.state.participants && this.state.participants.concat([[],[],[],[],[]]).map((part, idx) =>
+              return this.state.participants && this.state.participants.concat([[], [], [], [], []]).map((part, idx) =>
                 [
                   <NamePlate name={part[0]}
                              corner={part[3]}
                              menu={part[6]}
                              key={idx}/>
                 ]);
+            case VIEWS.roomSigns:
+              return this.state.roomList && this.state.roomList.concat([[], []]).map((part, idx) =>
+                [
+                  <RoomSigns kid={!!part[0]}
+                             names={part.splice(1)}
+                             key={idx}/>
+                ]);
             case VIEWS.tableOverview:
-              return this.state.participants && <TableOverview participants={this.mapParticipants(this.state.participants)}/>
+              return this.state.participants &&
+                <TableOverview participants={this.mapParticipants(this.state.participants)}/>
             default:
               return <span>default: not jet impleneted</span>;
           }
@@ -94,7 +108,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    loadGapi(participants => this.setState({participants: participants}));
+    loadGapi((participants, roomList) => this.setState({participants, roomList}));
   }
 
   mapParticipants(rawParticipants) {

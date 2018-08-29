@@ -22,13 +22,19 @@ async function initClient(cb) {
 
   // Listen for sign-in state changes.
   gapi.auth2.getAuthInstance().isSignedIn.listen(() => {
-    fetchParticipants()
-      .then(participents => cb(participents));
+    Promise.all([
+      fetchParticipants(),
+      fetchRoomlist()
+    ])
+      .then(data => cb(data[0], data[1]));
   });
 
   if (gapi.auth2.getAuthInstance().isSignedIn.get()) {
-    fetchParticipants()
-      .then(participents => cb(participents));
+    Promise.all([
+      fetchParticipants(),
+      fetchRoomlist()
+    ])
+      .then(data => cb(data[0], data[1]));
   } else {
     gapi.auth2.getAuthInstance().signIn();
   }
@@ -36,8 +42,7 @@ async function initClient(cb) {
 }
 
 /**
- * Prints the names and majors of students in a sample spreadsheet:
- * @see https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+ * Fetches all participants
  */
 async function fetchParticipants() {
   const participantsRes = await gapi.client.sheets.spreadsheets.values.get({
@@ -52,6 +57,26 @@ async function fetchParticipants() {
   // console.log('names', Object.keys(names).map(k => [k, names[k]]))
 
   let participantDetails = participantsRes.result.values;
-  // console.log('participants', participantDetails.length, 'first result', participantDetails[0]);
+  console.log('participants', participantDetails.length, 'first result', participantDetails[0]);
   return participantDetails;
+}
+
+/**
+ * Fetches the room list
+ */
+async function fetchRoomlist() {
+  const roomsRes = await gapi.client.sheets.spreadsheets.values.get({
+    spreadsheetId: '1pjtRcgHYwVR7i8l4pJgatTHoUzIjHJmAvGmpDVld14k',
+    range: 'RoomSigns!A2:E',
+  });
+
+  // const parts = roomsRes.result.values;
+  // console.log(parts[0])
+  // const names = {};
+  // parts.sort((a,b) => a[0].localeCompare(b[0])).forEach(n => names[n[6]] ? names[n[6]].push(n[0]) : names[n[6]] = [n[0]]);
+  // console.log('names', Object.keys(names).map(k => [k, names[k]]))
+
+  let roomList = roomsRes.result.values;
+  console.log('rooms', roomList.length, 'first result', roomList[0]);
+  return roomList;
 }

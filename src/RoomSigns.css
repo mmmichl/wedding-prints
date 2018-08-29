@@ -1,0 +1,27 @@
+.page-wrapper {
+  width: 210mm;
+  height: 148mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("./circle_blank.svg") no-repeat center center;
+  background-size: 65%;
+
+  font-family: capsuula, sans-serif;
+  font-size: 1cm;
+  color: rgb(8, 110, 131);
+
+  /*border: solid 1px black;*/
+  border-bottom: dashed 1px #e0e0e0;
+}
+
+.content {
+  text-align: center;
+  width: 93mm;
+  margin-left: 13px;
+}
+
+.content img {
+  margin-top: 7mm;
+  width: 60px;
+}

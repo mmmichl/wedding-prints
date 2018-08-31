@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './TableOverview.css';
+import NamePlate from "./NamePlate";
 
 
 export default class TableOverview extends Component {
@@ -10,9 +11,11 @@ export default class TableOverview extends Component {
     };
   }
 
+  namePlate = new NamePlate();
+
   componentWillMount() {
     const collapsed = {};
-    this.getTablePairs().forEach(p => collapsed[p[0]] = this.isJustRightQuota(p[1]));
+    // this.getTablePairs().forEach(p => collapsed[p[0]] = this.isJustRightQuota(p[1]));
     this.setState({collapsed});
   }
 
@@ -94,7 +97,8 @@ export default class TableOverview extends Component {
           </small>
         </h2>,
         !this.state.collapsed[pair[0]] ? <ul key={"l" + pair[0]}>
-          {pair[1].map((p, idx) => <li key={pair[0] + ":" + idx}>{p.firstName} {p.lastName} ({p.corner})
+          {pair[1].map((p, idx) => <li key={pair[0] + ":" + idx}>{p.firstName} {p.lastName}
+            ({p.corner}) - {this.namePlate.menuText(p.dinner)}
             {this.getKidIcon(p)}</li>)}
         </ul> : null
       ])}

@@ -136,7 +136,8 @@ class App extends Component {
       lastName: p[1],
       kidChair: p[2],
       corner: p[3],
-      tableNr: p[5]
+      tableNr: p[5],
+      dinner: p[6],
     }));
   }
 }

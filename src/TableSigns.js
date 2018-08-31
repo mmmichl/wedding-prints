@@ -18,7 +18,9 @@ export default class TableSigns extends Component {
       <div>
         <div className="a4-wrapper table-sign content">
           <div className="page-wrapper">
-            <div>
+            <div style={{'margin-left': '5mm'}}>
+              <h2>Danke</h2>
+              an alle, die mitgeholfen haben, diesen Abend zu gestalten <br/>und an alle, die ihn unvergesslich machen werden!
               <h2>Euer Lied</h2>
               <strong>{this.props.song}</strong>
 
@@ -38,6 +40,7 @@ export default class TableSigns extends Component {
           <div className="page-wrapper">
             <div className="schedule">
               <h2>Getränke</h2>
+              <small>bitte mit euren Kluppen markieren zum Wiederfinden</small>
               <h3>Weine am Tisch</h3>
               <table>
                 <tr>
@@ -66,7 +69,7 @@ export default class TableSigns extends Component {
               Gelber Muskateller
               <div className="small">Weingut Stefan Potzinger, Gabersdorf-Südsteiermark</div>
 
-              <h2>Gastgeschänk</h2>
+              <h2>Gastgeschenk</h2>
               Vergesst nicht eure Blumen mitzunehmen!
             </div>
           </div>

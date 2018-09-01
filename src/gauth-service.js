@@ -12,33 +12,37 @@ export function loadGapi(cb) {
 }
 
 async function initClient(cb) {
-  // 2. Initialize the JavaScript client library.
-  await window.gapi.client.init({
-    apiKey: apiKey,
-    clientId: clientId,
-    discoveryDocs: discoveryDocs,
-    scope: SCOPES
-  });
+  try {
+    // 2. Initialize the JavaScript client library.
+    await window.gapi.client.init({
+      apiKey: apiKey,
+      clientId: clientId,
+      discoveryDocs: discoveryDocs,
+      scope: SCOPES
+    });
 
-  // Listen for sign-in state changes.
-  gapi.auth2.getAuthInstance().isSignedIn.listen(() => {
-    Promise.all([
-      fetchParticipants(),
-      fetchRoomlist()
-    ])
-      .then(data => cb(data[0], data[1]));
-  });
+    // Listen for sign-in state changes.
+    gapi.auth2.getAuthInstance().isSignedIn.listen(() => {
+      Promise.all([
+        fetchParticipants(),
+        fetchRoomlist()
+      ])
+        .then(data => cb(null, data[0], data[1]), error => cb(error));
+    });
 
-  if (gapi.auth2.getAuthInstance().isSignedIn.get()) {
-    Promise.all([
-      fetchParticipants(),
-      fetchRoomlist()
-    ])
-      .then(data => cb(data[0], data[1]));
-  } else {
-    gapi.auth2.getAuthInstance().signIn();
+    if (gapi.auth2.getAuthInstance().isSignedIn.get()) {
+      Promise.all([
+        fetchParticipants(),
+        fetchRoomlist()
+      ])
+        .then(data => cb(null, data[0], data[1]), error => cb(error));
+    } else {
+      gapi.auth2.getAuthInstance().signIn();
+    }
+    console.log('after login status', gapi.auth2.getAuthInstance().isSignedIn.get());
+  } catch (e) {
+    cb(e);
   }
-  console.log('after login status', gapi.auth2.getAuthInstance().isSignedIn.get());
 }
 
 /**

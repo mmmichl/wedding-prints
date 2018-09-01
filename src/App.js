@@ -18,6 +18,7 @@ const VIEWS = {
   roomSigns: 5,
   tableSigns: 6,
   nameTag: 7,
+  error: 8,
 };
 
 // interface Participant
@@ -33,7 +34,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: VIEWS.nameTag,
+      view: VIEWS.tableSigns,
       debugOutline: false,
       participants: null,
       tables: [
@@ -91,6 +92,10 @@ class App extends Component {
           switch (this.state.view) {
             case VIEWS.none:
               return <span>Select a view</span>;
+            case VIEWS.error:
+              return <div style={{border: 'red 1px solid', padding: "1em"}}>
+                Error from Google Drive:<br/>
+                {JSON.stringify(this.state.error)}</div>;
             case (VIEWS.clamps):
               return this.state.participants && this.state.participants.concat([[], [], [], []], []).map((part, idx) =>
                 <NameClamp name={part[0]} outline={false} key={idx}/>);
@@ -135,7 +140,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    loadGapi((participants, roomList) => this.setState({participants, roomList}));
+    loadGapi((error, participants, roomList) => !error ? this.setState({participants, roomList}) : this.setState({error, view: VIEWS.error}));
   }
 
   mapParticipants(rawParticipants) {

@@ -23,11 +23,10 @@ export default class TableSigns extends Component {
               an alle, die mitgeholfen haben, diesen Abend zu gestalten <br/>und an alle, die ihn unvergesslich machen werden!
               <h2>Euer Lied</h2>
               <strong>{this.props.song}</strong>
-
-              <h2>Gleich vorweg</h2>
+              <p>
               Bitte überlegt euch gemeinsam eine kleine Choreographie passend zu eurem Lied,
               ihr werdet sie nach der Hauptspeise brauchen.
-
+              </p>
               <h2>Grober Ablauf</h2>
               <ul>
                 <li>18:00: Vorspeisenbuffet</li>

@@ -6,6 +6,7 @@ import TableSigns from "./TableSigns";
 import TableOverview from "./TableOverview";
 import {loadGapi} from "./gauth-service";
 import './App.css';
+import NameTags from "./name-tags/NameTags";
 // import namePlateImg from './Namensschilder_Tisch_59,2x63,5mm_A-Falt_blanko.svg';
 
 const VIEWS = {
@@ -16,6 +17,7 @@ const VIEWS = {
   tableOverview: 4,
   roomSigns: 5,
   tableSigns: 6,
+  nameTag: 7,
 };
 
 // interface Participant
@@ -31,7 +33,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: VIEWS.tableSigns,
+      view: VIEWS.nameTag,
       debugOutline: false,
       participants: null,
       tables: [
@@ -67,6 +69,9 @@ class App extends Component {
           <label><input type="radio" name="view" value={VIEWS.namePlate}
                         checked={this.state.view === VIEWS.namePlate}
                         onChange={evt => this.viewChanged(evt)}/>Name Plates</label>
+          <label><input type="radio" name="view" value={VIEWS.nameTag}
+                        checked={this.state.view === VIEWS.nameTag}
+                        onChange={evt => this.viewChanged(evt)}/>Name Tags</label>
           <label><input type="radio" name="view" value={VIEWS.roomSigns}
                         checked={this.state.view === VIEWS.roomSigns}
                         onChange={evt => this.viewChanged(evt)}/>Room Signs</label>
@@ -100,6 +105,9 @@ class App extends Component {
                              menu={part[6]}
                              key={idx}/>
                 ]);
+            case VIEWS.nameTag:
+              return this.state.participants &&
+                  <NameTags participants={this.mapParticipants(this.state.participants.concat([[], [], [], [], []]))}/>;
             case VIEWS.roomSigns:
               return this.state.roomList && this.state.roomList.concat([[], []]).map((part, idx) =>
                 [
@@ -117,7 +125,7 @@ class App extends Component {
                 ]);
             case VIEWS.tableOverview:
               return this.state.participants &&
-                <TableOverview participants={this.mapParticipants(this.state.participants)}/>
+                <TableOverview participants={this.mapParticipants(this.state.participants)}/>;
             default:
               return <span>default: not jet impleneted</span>;
           }
@@ -136,6 +144,7 @@ class App extends Component {
       lastName: p[1],
       kidChair: p[2],
       corner: p[3],
+      intolerances: p[4],
       tableNr: p[5],
       dinner: p[6],
     }));

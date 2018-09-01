@@ -20,7 +20,7 @@
 }
 
 .table-sign.content .page-wrapper > div {
-  padding: 2cm 1cm;
+  padding: 2.4cm 1cm 0;
   text-align: center;
 }
 
@@ -69,30 +69,34 @@
 }
 
 .table-sign.a4-wrapper.content .page-wrapper {
-  font-size: 6mm;
+  font-size: 4mm;
 }
 
-.hint {
+.table-sign .hint {
   font-style: italic;
 }
 
 .table-sign h2 {
-  margin: 12mm 0 2mm;
+  margin: 6mm 0 1mm;
 
   font-family: foxinsnow, sans-serif;
-  font-size: 1cm;
+  font-size: 7mm;
 }
 
 .table-sign h3 {
-  margin: 3mm 0 0;
+  margin: 2mm 0 0;
 
-  font-size: 8mm;
+  font-size: 5mm;
   font-weight: normal;
   color: var(--orange);
 }
 
+.table-sign p {
+  margin: 0.3em 0;
+}
+
 .table-sign .small {
-  font-size: 5mm;
+  font-size: 3mm;
 }
 
 .table-sign ul {
@@ -112,9 +116,9 @@
 
 .table-sign table td {
   padding-right: 3mm;
-  padding-bottom: 2mm;
+  padding-bottom: 1mm;
   vertical-align: top;
   text-align: left;
 
-  line-height: 7mm;
+  line-height: 4.2mm;
 }

@@ -19,14 +19,13 @@ export default class TableSigns extends Component {
         <div className="a4-wrapper table-sign content">
           <div className="page-wrapper">
             <div style={{'margin-left': '5mm'}}>
-              <h2>Danke</h2>
-              an alle, die mitgeholfen haben, diesen Abend zu gestalten <br/>und an alle, die ihn unvergesslich machen werden!
               <h2>Euer Lied</h2>
               <strong>{this.props.song}</strong>
               <p>
-              Bitte überlegt euch gemeinsam eine kleine Choreographie passend zu eurem Lied,
-              ihr werdet sie nach der Hauptspeise brauchen.
+                Bitte überlegt euch gemeinsam eine kleine Choreographie passend zu eurem Lied,<br/>
+                ihr werdet sie nach der Hauptspeise brauchen.
               </p>
+
               <h2>Grober Ablauf</h2>
               <ul>
                 <li>18:00: Vorspeisenbuffet</li>
@@ -34,12 +33,46 @@ export default class TableSigns extends Component {
                 <li>21:00: Nachspeisenbuffet</li>
                 <li>21:30: Partyeröffnung</li>
               </ul>
+
+              <h2>Vorspeisen Buffet</h2>
+              <div>Steirische Kürbiscreme Suppe mit Schwarzbrot Croutons</div>
+              <div>Avocado in drei Texturen (Vegan)</div>
+              <div>Gratiniertes Ziegenfrischkäse Mousse mit geschmolzenen Paradeisern (Vegetarisch)</div>
+              <div>Frischkäse Praline mit eigelegtem Muskatkürbis und Pumpernickel Türmchen an marinierten
+                Radieschen (Vegetarisch)
+              </div>
+
+              <h2>Hauptspeisen</h2>
+              <div>Tranche von der Rosa Flugentenbrust an pikantem Kürbis Ingwergemüse und überbackenem
+                Süßkartoffelgratin mit Sternanisjus (Fleisch)
+              </div>
+              <div>Gebratenes Waller Filet in Kürbiskernen gebraten mit feinen Wurzelgemüse Streifen und Schnittlauch
+                Kartoffeln an Krenschaum (Fisch)
+              </div>
+              <div>Geschwenkte Gnocchi mit feiner Kürbis Mandel Creme und steirischen Asmonte Käse an marinierten Spinat
+                Schalotten Salat (Vegetarisch)
+              </div>
+              <div>Mediterran gefüllte Melanzani an feinem Rucola Pesto und lauwarmen Paradeiser Carpaccio mit
+                Schalotten Vinaigrette (Vegan)
+              </div>
+
+              <h2>Nachspeisen Buffet</h2>
+              Verschiedenste Köstlichkeiten von Michls Onkel und fleißigen Bäckerinnen aus der Familie
+
             </div>
           </div>
           <div className="page-wrapper">
-            <div className="schedule">
+            <div style={{'margin-right': '5mm'}}>
+
+              <h2>Mitternachtssnack</h2>
+              <div>Gulaschsuppe (Fleisch)</div>
+              <div>Mozzarella & Tomaten (Vetarisch)</div>
+              <div>Käseplatte (Vegetarisch)</div>
+
+
               <h2>Getränke</h2>
               <small>bitte mit euren Kluppen markieren zum Wiederfinden</small>
+
               <h3>Weine am Tisch</h3>
               <table>
                 <tr>
@@ -61,8 +94,9 @@ export default class TableSigns extends Component {
               <h3>Bestellbar</h3>
               <small className="hint">
                 direkt bei Kellnern oder an der Bar bestellen
-              </small><br/>
-              Bier, Spritzer, Antialkoholika, Kaffee<br/>
+              </small>
+              <br/>
+              Bier, Spritzer, Antialkoholika<br/>
               Grüner Veltliner Terrassen
               <div className="small">Weingut Jurtschitsch, Langenlois – Kamptal</div>
               Gelber Muskateller
@@ -70,6 +104,11 @@ export default class TableSigns extends Component {
 
               <h2>Gastgeschenk</h2>
               Vergesst nicht eure Blumen mitzunehmen!
+
+              <h2>Danke</h2>
+              an alle, die mitgeholfen haben, diesen Abend zu gestalten <br/>und an alle, die ihn unvergesslich machen
+              werden!
+
             </div>
           </div>
         </div>

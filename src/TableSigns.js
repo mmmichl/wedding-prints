@@ -5,6 +5,16 @@ import a5Background from './A5_Infotafel_blanko.svg';
 
 export default class TableSigns extends Component {
 
+  commonSongTableText() {
+    const otherTables = this.props.commonTable;
+    if (!otherTables || otherTables.length === 0) return '';
+    if (otherTables.length === 1) {
+      return `Tisch #${otherTables[0]} hat das gleichen Lied wie ihr.`
+    } else {
+      return `Tische #${otherTables[0]} und #${otherTables[1]} haben das gleichen Lied wie ihr.`
+    }
+  }
+
   render() {
     const names = this.props.names;
 
@@ -22,8 +32,8 @@ export default class TableSigns extends Component {
               <h2>Euer Lied</h2>
               <strong>{this.props.song}</strong>
               <p>
-                Bitte überlegt euch gemeinsam eine kleine Choreographie passend zu eurem Lied,<br/>
-                ihr werdet sie nach der Hauptspeise brauchen.
+                Bitte überlegt euch gemeinsam einen kleinen Tanz passend zu eurem Lied,<br/>
+                ihr werdet ihn nach der Hauptspeise brauchen. {this.commonSongTableText()}
               </p>
 
               <h2>Grober Ablauf</h2>
@@ -66,7 +76,7 @@ export default class TableSigns extends Component {
 
               <h2>Mitternachtssnack</h2>
               <div>Gulaschsuppe (Fleisch)</div>
-              <div>Mozzarella & Tomaten (Vetarisch)</div>
+              <div>Mozzarella & Tomaten (Vegetarisch)</div>
               <div>Käseplatte (Vegetarisch)</div>
 
 

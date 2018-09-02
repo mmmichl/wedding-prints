@@ -38,10 +38,24 @@ class App extends Component {
       debugOutline: false,
       participants: null,
       tables: [
-        ['1', 'Super Awesome', 'Blur - Song 2'],
-        ['2', 'Mega geil', 'Baywatch Theme'],
-        ['3', 'Team Fuigas', 'Limp Bizkit - My Way'],
-        ['4', 'table name 4', 'Smash Mouth - All Star'],
+        [1, 'Wieso sama da?', 'Harlem Shake', []],
+        [7, 'Team Fuigas', 'EAV - Märchenprinz', [2]],
+        [2, 'Familie', 'EAV - Märchenprinz', [7]],
+        [15, 'Die Vargarischen', 'The darkness - I Believe In A Thing Called Love', [16]],
+        [16, 'Die Vargarischen', 'The darkness - I Believe In A Thing Called Love', [15]],
+        [17, 'Teenies', 'Maklermore - Can\'t Hold Us', [18]],
+        [18, 'Kids', 'Maklermore - Can\'t Hold Us', [17]],
+        [3, 'Familie', 'The Who - My Generation', [4]],
+        [4, 'Siemens/Family plus', 'The Who - My Generation', [3]],
+        [6, 'Team Fuigas', 'Deichkind - Bück Dich Hoch', [8]],
+        [8, 'Team Fuigas', 'Deichkind - Bück Dich Hoch', [6]],
+        [11, 'Fiaker & IAESTLER', 'Limahl - Neverending Story', [10]],
+        [10, 'Monokel Monokel', 'Limahl - Neverending Story', [11]],
+        [12, 'Family plus', 'Bonnie Tyler - I Need A Hero', [13, 14]],
+        [13, 'Von Klosterneuburg bis nach Dresden', 'Bonnie Tyler - I Need A Hero', [12, 14]],
+        [14, 'Toscanis/Unis', 'Bonnie Tyler - I Need A Hero', [13, 14]],
+        [5, 'FCM united', 'Spice Girls - Wanna Be', [9]],
+        [9, 'FCM united', 'Spice Girls - Wanna Be', [5]],
       ]
     };
 
@@ -112,7 +126,7 @@ class App extends Component {
                 ]);
             case VIEWS.nameTag:
               return this.state.participants &&
-                  <NameTags participants={this.mapParticipants(this.state.participants.concat([[], [], [], [], []]))}/>;
+                <NameTags participants={this.mapParticipants(this.state.participants.concat([[], [], [], [], []]))}/>;
             case VIEWS.roomSigns:
               return this.state.roomList && this.state.roomList.concat([[], []]).map((part, idx) =>
                 [
@@ -126,6 +140,7 @@ class App extends Component {
                   <TableSigns number={part[0]}
                               name={part[1]}
                               song={part[2]}
+                              commonTable={part[3]}
                               key={idx}/>
                 ]);
             case VIEWS.tableOverview:
@@ -140,7 +155,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    loadGapi((error, participants, roomList) => !error ? this.setState({participants, roomList}) : this.setState({error, view: VIEWS.error}));
+    loadGapi((error, participants, roomList) => !error ? this.setState({participants, roomList}) : this.setState({
+      error,
+      view: VIEWS.error
+    }));
   }
 
   mapParticipants(rawParticipants) {

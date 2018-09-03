@@ -45,22 +45,20 @@ export default class TableSigns extends Component {
               </ul>
 
               <h2>Vorspeisen Buffet</h2>
-              <div>Steirische Kürbiscreme Suppe mit Schwarzbrot Croutons</div>
+              <div>Steirische Kürbiscremesuppe mit Schwarzbrot-Croutons</div>
               <div>Avocado in drei Texturen (Vegan)</div>
-              <div>Gratiniertes Ziegenfrischkäse Mousse mit geschmolzenen Paradeisern (Vegetarisch)</div>
-              <div>Frischkäse Praline mit eigelegtem Muskatkürbis und Pumpernickel Türmchen an marinierten
+              <div>Gratiniertes Ziegenfrischkäse-Mousse mit geschmolzenen Paradeisern (Vegetarisch)</div>
+              <div>Frischkäse Praline mit eingelegtem Muskatkürbis und Pumpernickel Türmchen an marinierten
                 Radieschen (Vegetarisch)
               </div>
 
               <h2>Hauptspeisen</h2>
-              <div>Tranche von der Rosa Flugentenbrust an pikantem Kürbis Ingwergemüse und überbackenem
+              <div>Tranche von der rosa Flugentenbrust an pikantem Kürbis-Ingwergemüse und überbackenem
                 Süßkartoffelgratin mit Sternanisjus (Fleisch)
               </div>
-              <div>Gebratenes Waller Filet in Kürbiskernen gebraten mit feinen Wurzelgemüse Streifen und Schnittlauch
-                Kartoffeln an Krenschaum (Fisch)
+              <div>Gebratenes Waller Filet in Kürbiskernen mit feinen Wurzelgemüse-Streifen und Schnittlauchkartoffeln an Krenschaum (Fisch)
               </div>
-              <div>Geschwenkte Gnocchi mit feiner Kürbis Mandel Creme und steirischen Asmonte Käse an marinierten Spinat
-                Schalotten Salat (Vegetarisch)
+              <div>Geschwenkte Gnocchi mit feiner Kürbis-Mandel-Creme und steirischem Asmonte Käse an marinierten Spinat-Schalotten-Salat (Vegetarisch)
               </div>
               <div>Mediterran gefüllte Melanzani an feinem Rucola Pesto und lauwarmen Paradeiser Carpaccio mit
                 Schalotten Vinaigrette (Vegan)

@@ -40,10 +40,9 @@
   color: rgb(8, 110, 131);
 
   background: url("./Namensetiketten_klebend_29,6x62,5mm_blanko.svg") no-repeat center center;
-  /*background-size: 98.5%;*/
-  background-size: cover;
+  background-size: 97% 94%;
 
-  border: solid #000 1px;
+  /*border: solid #000 1px;*/
 }
 /*.name-tag--wrapper:nth-child(6n+3),*/
 /*.name-tag--wrapper:nth-child(6n+1),*/
@@ -62,22 +61,17 @@
 
 .name-tag--wrapper .bigger {
   padding-top: 1mm;
-  /*padding-bottom: 0.5mm;*/
   font-size: 1cm;
   line-height: 1.1cm;
-  /*line-height: 0.98cm;*/
-  /*font-weight: bold;*/
 }
 
 .name-tag--wrapper .menu {
-  /*font-size: 0.6cm;*/
   margin-top: 0.2cm;
   color: #D09A37;
 }
 
 .name-tag--horizontal-cut-indicator {
   width: 1px;
-  /*height: 8cm;*/
   border-top: 0.5cm solid #e0e0e0;
   border-bottom: 0.5cm solid #e0e0e0;
   margin-left: -1px;
@@ -87,11 +81,3 @@
   width: 8mm;
   vertical-align: top;
 }
-
-/*.clown-hat::after {*/
-/*content: " ";*/
-/*background: url("./Namensschilder_Tisch_59,2x63,5mm_A-Falt.svg") no-repeat center center;*/
-/*background-size: contain;*/
-/*width: 10mm;*/
-/*vertical-align: top;*/
-/*}*/

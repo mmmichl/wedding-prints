@@ -19,6 +19,7 @@ const VIEWS = {
   tableSigns: 6,
   nameTag: 7,
   error: 8,
+  desert: 9,
 };
 
 // interface Participant
@@ -34,28 +35,47 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      view: VIEWS.tableSigns,
+      view: VIEWS.desert,
       debugOutline: false,
       participants: null,
       tables: [
-        [1,  'Die Ja Sager', 'Harlem Shake', []],
-        [7,  'Team Fuigas', 'EAV - Märchenprinz', [2]],
-        [2,  'Tratschonkeln', 'EAV - Märchenprinz', [7]],
+        [1, 'Die Ja Sager', 'Harlem Shake', []],
+        [7, 'Team Fuigas', 'EAV - Märchenprinz', [2]],
+        [2, 'Tratschonkeln', 'EAV - Märchenprinz', [7]],
         [15, 'Der Bäcker und die Gang', 'The darkness - I Believe In A Thing Called Love', [16]],
         [16, 'Der Bäcker und die Gang', 'The darkness - I Believe In A Thing Called Love', [15]],
         [17, 'Die Steuerzahler von morgen', 'Maklermore - Can\'t Hold Us', [18]],
         [18, 'Lego Meister', 'Maklermore - Can\'t Hold Us', [17]],
-        [3,  'Prägende Elemente', 'The Who - My Generation', [4]],
-        [4,  'Family Croissant', 'The Who - My Generation', [3]],
-        [6,  'Team Fuigas', 'Deichkind - Bück Dich Hoch', [8]],
-        [8,  'Team Fuigas', 'Deichkind - Bück Dich Hoch', [6]],
+        [3, 'Prägende Elemente', 'The Who - My Generation', [4]],
+        [4, 'Family Croissant', 'The Who - My Generation', [3]],
+        [6, 'Team Fuigas', 'Deichkind - Bück Dich Hoch', [8]],
+        [8, 'Team Fuigas', 'Deichkind - Bück Dich Hoch', [6]],
         [11, 'Fiaker Extended', 'Limahl - Neverending Story', [10]],
         [10, 'Monokel Monokel', 'Limahl - Neverending Story', [11]],
         [12, 'Familie plus', 'Bonnie Tyler - I Need A Hero', [13, 14]],
         [13, 'Oachkazalschwoaf', 'Bonnie Tyler - I Need A Hero', [12, 14]],
         [14, 'Tosca(U)nis', 'Bonnie Tyler - I Need A Hero', [13, 14]],
-        [5,  'FCM uni(ted)', 'Spice Girls - Wanna Be', [9]],
-        [9,  'FCM uni(ted)', 'Spice Girls - Wanna Be', [5]],
+        [5, 'FCM uni(ted)', 'Spice Girls - Wanna Be', [9]],
+        [9, 'FCM uni(ted)', 'Spice Girls - Wanna Be', [5]],
+      ],
+      deserts: [
+        {name: 'Vanillekipferl', glutenFree: false},
+        {name: 'Ischlertörtchen', glutenFree: false},
+        {name: 'Husarenkrapferl', glutenFree: false},
+        {name: 'Schoko-Nusspusserl', glutenFree: false},
+        {name: 'Kokosettschnitten', glutenFree: false},
+        {name: 'Topfenschnitten mit Brombeergelee', glutenFree: false},
+        {name: 'Biskuitroulade', glutenFree: false},
+        {name: 'Rumschnitten', glutenFree: false},
+        {name: 'Pflastersteine', glutenFree: false},
+        {name: 'Ribiselschnitten', glutenFree: false},
+        {name: '⛄ Schneemänner ⛄', glutenFree: false},
+        {name: 'Mohnschnitten', glutenFree: true},
+        {name: 'Mohnstrudel', glutenFree: false},
+        {name: 'Nussstrudel', glutenFree: false},
+        {name: 'Sacher + Raphaelo Torte', glutenFree: false},
+        {name: 'Anna Kipferln', glutenFree: false},
+        {name: 'Bauernbrötchen', glutenFree: true},
       ]
     };
 
@@ -93,6 +113,9 @@ class App extends Component {
           <label><input type="radio" name="view" value={VIEWS.tableSigns}
                         checked={this.state.view === VIEWS.tableSigns}
                         onChange={evt => this.viewChanged(evt)}/>Table Signs</label>
+          <label><input type="radio" name="view" value={VIEWS.desert}
+                        checked={this.state.view === VIEWS.desert}
+                        onChange={evt => this.viewChanged(evt)}/>Desert</label>
           <label><input type="radio" name="view" value={VIEWS.tableOverview}
                         checked={this.state.view === VIEWS.tableOverview}
                         onChange={evt => this.viewChanged(evt)}/>Table Overview</label>
@@ -124,6 +147,20 @@ class App extends Component {
                              menu={part[6]}
                              key={idx}/>
                 ]);
+            case VIEWS.desert:
+              return <div className="deserts">
+                {this.state.deserts && this.state.deserts.concat([[], [], []]).map((part, idx) =>
+                  [
+                    <NamePlate name={part.name}
+                               corner={part.glutenFree ? 'glutenfrei' : ''}
+                               menu={''}
+                               key={idx + "a"}/>,
+                    <NamePlate name={part.name}
+                               corner={part.glutenFree ? 'glutenfrei' : ''}
+                               menu={''}
+                               key={idx + "b"}/>,
+                  ])}
+              </div>;
             case VIEWS.nameTag:
               return this.state.participants &&
                 <NameTags participants={this.mapParticipants(this.state.participants.concat([[], [], [], [], []]))}/>;

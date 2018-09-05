@@ -78,3 +78,14 @@
   /*width: 10mm;*/
   /*vertical-align: top;*/
 /*}*/
+
+
+.deserts .bigger {
+  font-size: 8mm;
+    color: var(--teal);
+}
+
+.deserts span {
+  color: var(--orange);
+  font-size: 5mm;
+}

@@ -92,9 +92,9 @@ export default class TableOverview extends Component {
 
       {this.getTablePairs().map(pair => [
         <h2 key={pair[0]} onClick={() => this.toggleShow(pair[0])}>Tisch {pair[0]}
-          {/*<small>*/}
-            {/*<span className={this.getInfoClass(pair[1])}> Anz: {pair[1].length}, Kids: {this.kidsCount(pair[1])}</span>*/}
-          {/*</small>*/}
+          <small>
+            <span className={this.getInfoClass(pair[1])}> Anz: {pair[1].length}, Kids: {this.kidsCount(pair[1])}</span>
+          </small>
         </h2>,
         !this.state.collapsed[pair[0]] ? <ul key={"l" + pair[0]}>
           {pair[1].map((p, idx) => <li key={pair[0] + ":" + idx}>{p.firstName} {p.lastName}

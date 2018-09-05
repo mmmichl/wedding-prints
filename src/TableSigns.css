@@ -20,7 +20,7 @@
 }
 
 .table-sign.content .page-wrapper > div {
-  padding: 2.4cm 1cm 0;
+  padding: 2.55cm 1cm 0;
   text-align: center;
 }
 
@@ -50,7 +50,8 @@
 }
 
 .table-sign .table-name strong {
-  font-size: 1.2cm;
+  font-size: 1.4cm;
+  font-weight: normal;
 }
 
 .table-sign .number {
@@ -59,7 +60,7 @@
   right: 7mm;
 
   color: var(--orange);
-  font-weight: bold;
+  /*font-weight: bold;*/
   font-size: 1.5cm;
 }
 
@@ -77,10 +78,11 @@
 }
 
 .table-sign h2 {
-  margin: 6mm 0 1mm;
+  margin: 5mm 0 1mm;
 
   font-family: foxinsnow, sans-serif;
-  font-size: 7mm;
+  font-size: 8mm;
+  font-weight: normal;
 }
 
 .table-sign h3 {
@@ -89,6 +91,10 @@
   font-size: 5mm;
   font-weight: normal;
   color: var(--orange);
+}
+
+.table-sign .song-name {
+  font-size: 120%;
 }
 
 .table-sign p {

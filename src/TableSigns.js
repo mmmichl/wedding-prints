@@ -30,7 +30,7 @@ export default class TableSigns extends Component {
           <div className="page-wrapper">
             <div style={{'margin-left': '5mm'}}>
               <h2>Euer Lied</h2>
-              <strong>{this.props.song}</strong>
+              <span className="song-name">{this.props.song}</span>
               <p>
                 Bitte überlegt euch gemeinsam einen kleinen Tanz passend zu eurem Lied,<br/>
                 ihr werdet ihn nach der Hauptspeise brauchen. {this.commonSongTableText()}
